@@ -1,0 +1,60 @@
+.card,
+.photo {
+  max-width: 140px;
+
+  @media (min-width: 580px) {
+    max-width: 230px;
+  }
+
+  @media (min-width: 820px) {
+    max-width: 300px;
+  }
+}
+
+.photo {
+  margin-bottom: 20px;
+  border-radius: 16px;
+}
+
+.description {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 12px;
+
+  @media (min-width: 580px) {
+    font-size: 16px;
+  }
+}
+
+.price {
+  font-size: 16px;
+
+  @media (min-width: 580px) {
+    font-size: 20px;
+  }
+}
+
+.button {
+  padding: 12px 24px;
+  width: 100%;
+  border: 1px solid #780096;
+  border-radius: 32px;
+  color: #780096;
+
+  &:hover,
+  &:active {
+    background-color: #780096;
+    color: #ffffff;
+  }
+
+  &:focus-visible {
+    color: #780096;
+    outline-color: #c0f;
+  }
+}
