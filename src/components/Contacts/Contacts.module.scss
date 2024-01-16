@@ -1,0 +1,25 @@
+.phone {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 4px;
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+}
+
+.phone,
+.link {
+  outline: none;
+
+  &:hover,
+  &:active {
+    color: #780096;
+  }
+
+  &:focus-visible {
+    color: #780096;
+    outline-color: #780096;
+  }
+}
