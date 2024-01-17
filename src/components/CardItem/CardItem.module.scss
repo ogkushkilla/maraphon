@@ -1,42 +1,79 @@
-.card,
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .photo {
-  max-width: 140px;
+  width: 100%;
+  border-radius: 16px;
+  aspect-ratio: 7/6;
+  object-fit: cover;
 
   @media (min-width: 580px) {
-    max-width: 230px;
+    aspect-ratio: 23/20;
   }
 
   @media (min-width: 820px) {
-    max-width: 300px;
+    aspect-ratio: 151/125;
   }
 }
 
-.photo {
-  margin-bottom: 20px;
-  border-radius: 16px;
-}
-
 .description {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-grow: 1;
+
+  @media (min-width: 580px) {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 5px;
+  }
 }
 
 .title {
+  margin-bottom: 4px;
   font-size: 12px;
+  font-weight: 400;
 
   @media (min-width: 580px) {
+    margin-bottom: 0;
+    padding-top: 3px;
     font-size: 16px;
   }
 }
 
 .price {
+  margin-bottom: 12px;
   font-size: 16px;
 
   @media (min-width: 580px) {
+    margin-bottom: 0;
     font-size: 20px;
+  }
+}
+
+.favorite {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  svg {
+    fill: #ffffff;
+  }
+
+  &:hover,
+  &_active {
+    color: #780096;
+    svg {
+      fill: #780096;
+    }
+  }
+
+  &:active {
+    color: #c0f;
+    svg {
+      fill: #c0f;
+    }
   }
 }
 
