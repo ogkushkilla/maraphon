@@ -1,20 +1,23 @@
+import { Link } from "react-router-dom";
 import style from "./CardItem.module.scss";
 
 export const CardItem = ({ data }) => (
   <article className={style.card}>
-    <a href={`product/${data.article}`} className={style.link}>
+    <Link to={`product/${data.id}`} className={style.link}>
       <img
         className={style.photo}
         src={`https://koff-api.vercel.app/${data.images[0]}`}
         alt="Фото товара"
       />
-    </a>
+    </Link>
     <div className={style.description}>
-      <h3 className={style.title}>{data.name}</h3>
-      <span className={style.price}>{data.price} ₽</span>
+      <Link to={`product/${data.id}`} className={style.link}>
+        <h3 className={style.title}>{data.name}</h3>
+      </Link>
+      <span className={style.price}>{data.price.toLocaleString()} ₽</span>
     </div>
 
-    <button className={style.favorite} data-id="${id}">
+    <button className={style.favorite} data-id={data.id}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

@@ -7,46 +7,46 @@ const initialState = {
   error: null,
 };
 
-export const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
-  async (_, thunkAPI) => {
+export const fetchProduct = createAsyncThunk(
+  "product/fetchProduct",
+  async (id, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.accessToken;
 
-    const response = await fetch(`${API_URL}api/products`, {
+    const response = await fetch(`${API_URL}api/products/${id}`, {
       headers: {
         Authorization: `bearer ${token}`,
       },
     });
 
     if (!response.ok) {
-      throw new Error("Не удалось получить товары");
+      throw new Error("Не удалось получить товар");
     }
 
     return response.json();
   },
 );
 
-const productsSlice = createSlice({
-  name: "products",
+const productSlice = createSlice({
+  name: "product",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProducts.pending, (state) => {
+      .addCase(fetchProduct.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
+      .addCase(fetchProduct.fulfilled, (state, action) => {
         state.data = action.payload;
         state.loading = false;
         state.error = null;
       })
-      .addCase(fetchProducts.rejected, (state, action) => {
+      .addCase(fetchProduct.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
   },
 });
 
-export default productsSlice.reducer;
+export default productSlice.reducer;
