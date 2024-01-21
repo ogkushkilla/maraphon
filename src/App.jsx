@@ -8,6 +8,7 @@ import { Goods } from "./views/Goods/Goods";
 import { Catalog } from "./views/Catalog/Catalog";
 import { Cart } from "./components/Cart/Cart";
 import { Card } from "./components/Card/Card";
+import { NotFound } from "./views/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ]);
 
 const App = () => {
@@ -101,11 +106,7 @@ const App = () => {
 
   if (loading) return <div>Загрузка...</div>;
 
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

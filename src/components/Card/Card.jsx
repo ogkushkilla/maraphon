@@ -23,28 +23,30 @@ export const Card = () => {
     <section className={style.card}>
       <Container className={style.container}>
         <h2 className={style.title}>{data.name}</h2>
+
         <Slider data={data} />
+
         <div className={style.info}>
-          <span className={style.price}>{data.price.toLocaleString()} ₽</span>
-          <span className={style.article}>арт. {data.article}</span>
+          <div className={style.price}>{data.price.toLocaleString()} ₽</div>
+          <div className={style.article}>арт. {data.article}</div>
+
           <div className={style.characteristics}>
-            <h3>Общие характеристики</h3>
-            <div>
-              <div>
+            <h3 className={style.characteristicsTitle}>Общие характеристики</h3>
+            <table className={style.table}>
+              <tbody>
                 {data.characteristics.map((characteristic, i) => (
-                  <span key={i}>{characteristic[0]}</span>
+                  <tr key={i} className={style.row}>
+                    <td className={style.field}>{characteristic[0]}</td>
+                    <td className={style.value}>{characteristic[1]}</td>
+                  </tr>
                 ))}
-              </div>
-              <div>
-                {data.characteristics.map((characteristic, i) => (
-                  <span key={i}>{characteristic[1]}</span>
-                ))}
-              </div>
-            </div>
+              </tbody>
+            </table>
           </div>
-          <div className={style.actions}>
-            <button className={style.button}>В корзину</button>
-            <button className={style.favorite} data-id={data.id}>
+
+          <div className={style.btns}>
+            <button className={style.btn}>В корзину</button>
+            <button className={style.like} data-id={data.id}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
