@@ -22,7 +22,7 @@ export const Catalog = () => {
         <ul className={style.list}>
           {data.map((item, i) => (
             <li key={i}>
-              <Link to={`/category?slug=${item}`} className={style.link}>
+              <Link to={`/category?category=${item}`} className={style.link}>
                 {item}
               </Link>
             </li>

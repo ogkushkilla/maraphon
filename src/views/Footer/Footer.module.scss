@@ -45,6 +45,7 @@
 .contacts {
   @media (min-width: 580px) {
     grid-column: 2 / 3;
+    justify-self: end;
   }
 }
 
