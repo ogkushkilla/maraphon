@@ -6,6 +6,7 @@
 }
 
 .photo {
+  margin-bottom: 20px;
   width: 100%;
   border-radius: 16px;
   aspect-ratio: 7/6;
@@ -26,6 +27,7 @@
   @media (min-width: 580px) {
     margin-bottom: 20px;
     display: flex;
+    justify-content: space-between;
     gap: 5px;
   }
 }
@@ -45,6 +47,7 @@
 .price {
   margin-bottom: 12px;
   font-size: 16px;
+  white-space: nowrap;
 
   @media (min-width: 580px) {
     margin-bottom: 0;
