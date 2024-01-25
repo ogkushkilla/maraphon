@@ -4,18 +4,29 @@ import style from "./Goods.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../../store/products/products.slice";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 export const Goods = () => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.products);
   const [searchParam] = useSearchParams();
+  const { favoriteList } = useSelector((state) => state.favorite);
+  const { pathname } = useLocation();
+
   const category = searchParam.get("category");
   const search = searchParam.get("search");
 
   useEffect(() => {
-    dispatch(fetchProducts({ category, search }));
-  }, [dispatch, category, search]);
+    if (pathname !== "/favorite") {
+      dispatch(fetchProducts({ category, search }));
+    }
+  }, [dispatch, category, search, pathname]);
+
+  useEffect(() => {
+    if (pathname === "/favorite") {
+      dispatch(fetchProducts({ list: favoriteList.join(",") }));
+    }
+  }, [dispatch, pathname, favoriteList]);
 
   if (loading) return <div>Загрузка...</div>;
   if (error) return <div>Ошибка: {error}</div>;
