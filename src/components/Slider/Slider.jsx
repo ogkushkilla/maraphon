@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Swiper } from "swiper/react";
-import { Thumbs } from "swiper/modules";
+import { Navigation, Thumbs } from "swiper/modules";
 import { SwiperSlide } from "swiper/react";
 import style from "./Slider.module.scss";
 import { API_URL } from "../../const";
 
 export const Slider = ({ data }) => {
-  const [mainSwiper, setMainSwiper] = useState(null);
+  const [, setMainSwiper] = useState(null);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
@@ -15,9 +15,10 @@ export const Slider = ({ data }) => {
         {data.images?.length > 0 ? (
           <>
             <Swiper
-              modules={[Thumbs]}
+              modules={[Navigation, Thumbs]}
               thumbs={{ swiper: thumbsSwiper }}
               onSwiper={setMainSwiper}
+              navigation={{ nextEl: "#swiper-forward", prevEl: "#swiper-back" }}
               spaceBetween={14}>
               {data.images.map((image, i) => (
                 <SwiperSlide key={i} className={style.slide}>
@@ -30,8 +31,8 @@ export const Slider = ({ data }) => {
               ))}
             </Swiper>
             <button
-              className={`${style.arrow} ${style.arrow_prev}`}
-              onClick={() => mainSwiper.slidePrev()}>
+              id="swiper-back"
+              className={`${style.arrow} ${style.arrow_prev}`}>
               <svg
                 width="32"
                 height="32"
@@ -69,8 +70,8 @@ export const Slider = ({ data }) => {
               </svg>
             </button>
             <button
-              className={`${style.arrow} ${style.arrow_next}`}
-              onClick={() => mainSwiper.slideNext()}>
+              id="swiper-forward"
+              className={`${style.arrow} ${style.arrow_next}`}>
               <svg
                 width="32"
                 height="32"
